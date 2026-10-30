@@ -10,8 +10,16 @@ export default function Hero() {
       id="home"
       className="relative w-full min-h-screen flex items-center justify-center bg-[#071426] text-white overflow-hidden pt-24 pb-16"
     >
-      {/* Ambient Deep Space Cyber Glow & Digital Mesh */}
-      <div className="absolute inset-0 bg-radial-gradient from-[#0C1D35] via-[#071426] to-[#040B15] pointer-events-none z-0" />
+      {/* Background Video Layer with Deep Contrast Overlay */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-screen pointer-events-none z-0"
+      >
+        <source src="/assets/vuedata-intro-6.mp4" type="video/mp4" />
+      </video>
 
       {/* Cyber Grid & Ambient Lighting */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40 z-0 pointer-events-none" />
