@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Sparkles, Shield, Cpu, Activity } from "lucide-react";
+import { asset } from "../lib/assets";
 
 export default function Hero() {
   return (
@@ -18,7 +19,7 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-screen pointer-events-none z-0"
       >
-        <source src="/assets/vuedata-intro-6.mp4" type="video/mp4" />
+        <source src={asset("/assets/vuedata-intro-6.mp4")} type="video/mp4" />
       </video>
 
       {/* Cyber Grid & Ambient Lighting */}

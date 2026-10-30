@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { asset } from "../lib/assets";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -42,7 +43,7 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-5">
             <Link href="/" className="inline-block">
               <img
-                src="/assets/vuedata light.png"
+                src={asset("/assets/vuedata light.png")}
                 alt="VueData Technologies"
                 className="h-8 w-auto object-contain"
               />
@@ -56,14 +57,14 @@ export default function Footer() {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <div className="bg-white/5 p-2 rounded-xl border border-white/10">
                 <img
-                  src="/assets/Webp.net-resizeimage.png"
+                  src={asset("/assets/Webp.net-resizeimage.png")}
                   alt="Microsoft Solutions Partner"
                   className="h-10 w-auto object-contain"
                 />
               </div>
               <div className="bg-white p-1.5 rounded-xl border border-white/10">
                 <img
-                  src="/assets/Webp.net-resizeimage iso.png"
+                  src={asset("/assets/Webp.net-resizeimage iso.png")}
                   alt="ISO Certified Standard"
                   className="h-8 w-auto object-contain"
                 />

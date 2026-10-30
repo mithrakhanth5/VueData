@@ -13,6 +13,7 @@ import {
   Activity,
   AlertTriangle,
 } from "lucide-react";
+import { asset } from "../../../lib/assets";
 
 interface CaseStudyData {
   title: string;
@@ -231,7 +232,7 @@ export default async function CaseStudyPage({
       <div className="bg-[#071426] text-white py-24 relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none"
-          style={{ backgroundImage: `url(${data.bgImage})` }}
+          style={{ backgroundImage: `url(${asset(data.bgImage)})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#071426] via-[#071426]/90 to-transparent pointer-events-none" />
 

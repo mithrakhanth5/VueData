@@ -12,6 +12,7 @@ import {
   Workflow,
   BrainCircuit,
 } from "lucide-react";
+import { asset } from "../../../lib/assets";
 
 export const metadata = {
   title: "AI / ML & Generative AI Practice | VueData Technologies",
@@ -125,7 +126,7 @@ export default function AiMlServicesPage() {
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-[#071426] p-2">
               <img
-                src="/assets/AI_part_2.webp"
+                src={asset("/assets/AI_part_2.webp")}
                 alt="AI Machine Learning Architecture"
                 className="w-full h-auto rounded-2xl object-cover"
               />

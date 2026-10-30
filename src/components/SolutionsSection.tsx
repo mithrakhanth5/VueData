@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2, TrendingUp, Layers, ChevronRight } from "lucide-react";
+import { asset } from "../lib/assets";
 
 interface SolutionItem {
   id: string;
@@ -132,7 +133,7 @@ export default function SolutionsSection() {
           {/* Left Visual & Image with Overlay */}
           <div className="lg:col-span-5 relative min-h-[340px] lg:min-h-[500px] overflow-hidden">
             <img
-              src={current.bgImage}
+              src={asset(current.bgImage)}
               alt={current.headline}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             />

@@ -11,6 +11,7 @@ import {
   Server,
   Cpu,
 } from "lucide-react";
+import { asset } from "../../../lib/assets";
 
 export const metadata = {
   title: "Service Management & 24/7 SRE Practice | VueData Technologies",
@@ -124,7 +125,7 @@ export default function ServiceManagementPage() {
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-[#071426] p-2">
               <img
-                src="/assets/data-management.webp"
+                src={asset("/assets/data-management.webp")}
                 alt="24/7 Service Management & SRE"
                 className="w-full h-auto rounded-2xl object-cover"
               />

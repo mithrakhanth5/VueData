@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { asset } from "../lib/assets";
 
 interface Client {
   name: string;
@@ -107,7 +108,7 @@ export default function ClientsSection() {
               className="flex items-center justify-center p-4 bg-[#F4F7FB] hover:bg-white rounded-2xl border border-gray-200/80 hover:border-[#2864FF]/40 shadow-sm hover:shadow-xl transition-all duration-300 w-48 h-24 shrink-0 group"
             >
               <img
-                src={client.logo}
+                src={asset(client.logo)}
                 alt={client.name}
                 className="max-h-11 max-w-[130px] object-contain transition-transform duration-300 group-hover:scale-110"
               />

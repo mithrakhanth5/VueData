@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ExternalLink, Sparkles, Tv, Database, MessageSquare, Truck, Search, CheckCircle2 } from "lucide-react";
+import { asset } from "../lib/assets";
 
 interface Product {
   id: string;
@@ -210,7 +211,7 @@ export default function ProductsSection() {
 
               <div className="relative aspect-video max-h-[340px] overflow-hidden">
                 <img
-                  src={current.image}
+                  src={asset(current.image)}
                   alt={current.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />

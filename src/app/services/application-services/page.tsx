@@ -12,6 +12,7 @@ import {
   RefreshCw,
   Terminal,
 } from "lucide-react";
+import { asset } from "../../../lib/assets";
 
 export const metadata = {
   title: "Application Engineering & Modernization Practice | VueData Technologies",
@@ -124,7 +125,7 @@ export default function ApplicationServicesPage() {
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-[#071426] p-2">
               <img
-                src="/assets/magnet-me-beCkhUB5aIA-unsplash.webp"
+                src={asset("/assets/magnet-me-beCkhUB5aIA-unsplash.webp")}
                 alt="Agile Full-Stack Software Engineering"
                 className="w-full h-auto rounded-2xl object-cover"
               />

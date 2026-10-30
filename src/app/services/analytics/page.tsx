@@ -10,6 +10,7 @@ import {
   Layers,
   Cpu,
 } from "lucide-react";
+import { asset } from "../../../lib/assets";
 
 export const metadata = {
   title: "Analytics & Big Data Engineering Practice | VueData Technologies",
@@ -123,7 +124,7 @@ export default function AnalyticsPage() {
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-[#071426] p-2">
               <img
-                src="/assets/analytics-services.webp"
+                src={asset("/assets/analytics-services.webp")}
                 alt="Big Data Analytics Lakehouse"
                 className="w-full h-auto rounded-2xl object-cover"
               />

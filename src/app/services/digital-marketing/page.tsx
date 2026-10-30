@@ -11,6 +11,7 @@ import {
   BarChart,
   Users,
 } from "lucide-react";
+import { asset } from "../../../lib/assets";
 
 export const metadata = {
   title: "Digital Marketing & Growth Transformation Practice | VueData Technologies",
@@ -124,7 +125,7 @@ export default function DigitalMarketingPage() {
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-[#071426] p-2">
               <img
-                src="/assets/digimarketing.webp"
+                src={asset("/assets/digimarketing.webp")}
                 alt="Digital Marketing Campaign Strategy"
                 className="w-full h-auto rounded-2xl object-cover"
               />

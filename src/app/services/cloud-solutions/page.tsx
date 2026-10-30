@@ -12,6 +12,7 @@ import {
   Gauge,
   Lock,
 } from "lucide-react";
+import { asset } from "../../../lib/assets";
 
 export const metadata = {
   title: "Cloud Solutions & Migration Practice | VueData Technologies",
@@ -123,7 +124,7 @@ export default function CloudSolutionsPage() {
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-[#071426] p-2">
               <img
-                src="/assets/cloud-services.webp"
+                src={asset("/assets/cloud-services.webp")}
                 alt="Cloud Infrastructure Architecture"
                 className="w-full h-auto rounded-2xl object-cover"
               />

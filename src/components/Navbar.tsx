@@ -19,6 +19,7 @@ import {
   Building2,
   Briefcase,
 } from "lucide-react";
+import { asset } from "../lib/assets";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -153,7 +154,7 @@ export default function Navbar() {
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <img
-              src="/assets/vuedata light.png"
+              src={asset("/assets/vuedata light.png")}
               alt="VueData Technologies"
               className="h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />

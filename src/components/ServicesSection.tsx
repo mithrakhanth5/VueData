@@ -12,6 +12,7 @@ import {
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
+import { asset } from "../lib/assets";
 
 interface ServiceItem {
   number: string;
@@ -126,7 +127,7 @@ export default function ServicesSection() {
                 {/* Top Image Preview with Gradient Overlay */}
                 <div className="relative h-48 w-full overflow-hidden bg-gray-100">
                   <img
-                    src={service.image}
+                    src={asset(service.image)}
                     alt={service.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
