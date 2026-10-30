@@ -2,25 +2,34 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X } from "lucide-react";
+import {
+  ChevronDown,
+  Menu,
+  X,
+  Sparkles,
+  Cloud,
+  Code2,
+  Database,
+  Megaphone,
+  Settings,
+  ArrowRight,
+  ExternalLink,
+  ShieldCheck,
+  Building2,
+  Briefcase,
+} from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -28,190 +37,364 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // For non-home pages, keep white navbar for readability
   const hasSolidNav = isScrolled || !isHomePage;
 
   const services = [
-    { name: "APPLICATION SERVICES", href: "/services/application-services" },
-    { name: "AI / ML SERVICES", href: "/services/ai-ml" },
-    { name: "ANALYTICS AND REPORTING", href: "/services/analytics" },
-    { name: "DIGITAL MARKETING", href: "/services/digital-marketing" },
-    { name: "SERVICE MANAGEMENT", href: "/services/service-management" },
+    {
+      title: "AI / ML Services",
+      desc: "Generative AI, enterprise LLMs, RAG & agentic workflows",
+      href: "/services/ai-ml",
+      icon: Sparkles,
+      tag: "Next-Gen",
+    },
+    {
+      title: "Cloud Solutions",
+      desc: "Azure, AWS, GCP architectures & seamless modernization",
+      href: "/services/cloud-solutions",
+      icon: Cloud,
+      tag: "Hyperscale",
+    },
+    {
+      title: "Analytics & Big Data",
+      desc: "Lakehouses, real-time telemetry & executive intelligence",
+      href: "/services/analytics",
+      icon: Database,
+      tag: "Data 360",
+    },
+    {
+      title: "Application Engineering",
+      desc: "Cloud-native web, mobile systems & microservices",
+      href: "/services/application-services",
+      icon: Code2,
+      tag: "Full-Stack",
+    },
+    {
+      title: "Digital Marketing",
+      desc: "Performance marketing, SEO, AEO & lifecycle CRM",
+      href: "/services/digital-marketing",
+      icon: Megaphone,
+      tag: "Growth",
+    },
+    {
+      title: "Service Management",
+      desc: "ITIL alignment, 24/7 SRE, observability & disaster recovery",
+      href: "/services/service-management",
+      icon: Settings,
+      tag: "Resilience",
+    },
   ];
 
   const products = [
-    { name: "DB-DAAS", href: "https://www.db-daas.com/", external: true },
-    { name: "Go-BOSS", href: "https://www.go-boss.com/", external: true },
-    { name: "Perchat.ai", href: "https://www.perchat.ai/", external: true },
-    { name: "ShipKasa", href: "https://www.shipkasa.com/", external: true },
-    { name: "PageRank.ai", href: "https://www.pagerank.ai/", external: true },
+    {
+      name: "Go-BOSS",
+      desc: "End-to-end streaming media infrastructure & OTT monetization platform",
+      url: "https://www.go-boss.com/",
+      category: "Media Tech",
+    },
+    {
+      name: "DB-DaaS",
+      desc: "Database release automation platform embedded directly in CI/CD",
+      url: "https://www.db-daas.com/",
+      category: "Database Ops",
+    },
+    {
+      name: "Perchat.ai",
+      desc: "AI-native conversational engine for autonomous enterprise support",
+      url: "https://www.perchat.ai/",
+      category: "Enterprise AI",
+    },
+    {
+      name: "ShipKasa",
+      desc: "Multi-carrier shipping fulfillment API & label generation engine",
+      url: "https://www.shipkasa.com/",
+      category: "Logistics SaaS",
+    },
+    {
+      name: "PageRank.ai",
+      desc: "Generative engine optimization (GEO/AEO) & search visibility suite",
+      url: "https://www.pagerank.ai/",
+      category: "AI Marketing",
+    },
+  ];
+
+  const solutions = [
+    {
+      title: "E-Commerce Scalability",
+      desc: "Modular headless commerce platforms built for Black Friday peaks",
+      href: "/solutions/e-commerce-casestudy",
+    },
+    {
+      title: "Customer Data 360",
+      desc: "Omnichannel customer engagement hub with unified live streaming data",
+      href: "/solutions/data-integration-casestudy",
+    },
+    {
+      title: "Test Automation Engine",
+      desc: "40% reduction in testing effort via reusable test automation frameworks",
+      href: "/solutions/testing-automation",
+    },
+    {
+      title: "Inter-Bank Payments",
+      desc: "High-throughput clearing & settlement platforms with zero downtime",
+      href: "/solutions/payments-solution",
+    },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         hasSolidNav
-          ? "bg-white shadow-[0_2px_15px_rgba(0,0,0,0.08)] py-3"
+          ? "bg-[#071426]/90 backdrop-blur-xl border-b border-white/10 py-3.5 shadow-2xl"
           : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            {hasSolidNav ? (
-              <img
-                src="/assets/vuedata-blue.webp"
-                alt="VueData"
-                className="h-6 md:h-7 w-auto object-contain transition-all"
-              />
-            ) : (
-              <img
-                src="/assets/vuedata light.png"
-                alt="VueData"
-                className="h-6 md:h-7 w-auto object-contain transition-all"
-              />
-            )}
+          {/* Brand Logo */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <img
+              src="/assets/vuedata light.png"
+              alt="VueData Technologies"
+              className="h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-7">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center space-x-1">
             <Link
-              href="/#home"
-              className={`text-xs font-semibold tracking-wider transition-colors duration-200 ${
-                hasSolidNav
-                  ? "text-[#29344a] hover:text-[#236cb1]"
-                  : "text-white/90 hover:text-white"
-              }`}
+              href="/"
+              className="px-3.5 py-2 text-xs font-semibold tracking-wider text-gray-200 hover:text-[#00C2E8] transition-colors rounded-lg"
             >
               HOME
             </Link>
 
-            {/* Services Dropdown */}
+            {/* Services Mega Menu */}
             <div
-              className="relative group"
-              onMouseEnter={() => setServicesDropdownOpen(true)}
-              onMouseLeave={() => setServicesDropdownOpen(false)}
+              className="relative"
+              onMouseEnter={() => setActiveMenu("services")}
+              onMouseLeave={() => setActiveMenu(null)}
             >
               <button
-                className={`flex items-center gap-1.5 text-xs font-semibold tracking-wider transition-colors duration-200 py-2 ${
-                  hasSolidNav
-                    ? "text-[#29344a] hover:text-[#236cb1]"
-                    : "text-white/90 hover:text-white"
+                className={`flex items-center gap-1 px-3.5 py-2 text-xs font-semibold tracking-wider transition-colors rounded-lg ${
+                  activeMenu === "services"
+                    ? "text-[#00C2E8] bg-white/5"
+                    : "text-gray-200 hover:text-[#00C2E8]"
                 }`}
-                aria-expanded={servicesDropdownOpen}
               >
                 SERVICES
-                <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    activeMenu === "services" ? "rotate-180 text-[#00C2E8]" : ""
+                  }`}
+                />
               </button>
 
-              {/* Dropdown Menu */}
+              {/* Mega Dropdown */}
               <div
-                className={`absolute top-full left-0 w-64 bg-white rounded-md shadow-xl border border-gray-100 py-2 transition-all duration-200 ${
-                  servicesDropdownOpen
-                    ? "opacity-100 visible translate-y-0"
-                    : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                className={`absolute top-full -left-20 w-[640px] bg-[#0C1D35]/95 backdrop-blur-2xl border border-white/15 rounded-2xl shadow-2xl p-6 transition-all duration-200 ${
+                  activeMenu === "services"
+                    ? "opacity-100 visible translate-y-2"
+                    : "opacity-0 invisible pointer-events-none translate-y-0"
                 }`}
               >
-                {services.map((item) => (
+                <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#00C2E8]">
+                    Capabilities &amp; Practices
+                  </span>
                   <Link
-                    key={item.name}
-                    href={item.href}
-                    className="block px-4 py-2.5 text-xs font-medium text-gray-700 hover:text-[#236cb1] hover:bg-sky-50/60 transition-colors"
+                    href="/#services"
+                    className="text-[11px] font-semibold text-gray-400 hover:text-white flex items-center gap-1"
                   >
-                    {item.name}
+                    View All Practices <ArrowRight className="w-3 h-3" />
                   </Link>
-                ))}
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  {services.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <Link
+                        key={item.title}
+                        href={item.href}
+                        className="group/item flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-[#2864FF]/20 text-[#00C2E8] flex items-center justify-center shrink-0 group-hover/item:bg-[#2864FF] group-hover/item:text-white transition-colors">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-bold text-white group-hover/item:text-[#00C2E8] transition-colors">
+                              {item.title}
+                            </span>
+                            <span className="text-[9px] uppercase px-1.5 py-0.2 rounded bg-white/10 text-gray-300 font-mono">
+                              {item.tag}
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-gray-400 line-clamp-1 mt-0.5">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-
-            {/* Solutions Link */}
-            <Link
-              href="/#solutions"
-              className={`text-xs font-semibold tracking-wider transition-colors duration-200 ${
-                hasSolidNav
-                  ? "text-[#29344a] hover:text-[#236cb1]"
-                  : "text-white/90 hover:text-white"
-              }`}
-            >
-              SOLUTIONS
-            </Link>
 
             {/* Products Dropdown */}
             <div
-              className="relative group"
-              onMouseEnter={() => setProductsDropdownOpen(true)}
-              onMouseLeave={() => setProductsDropdownOpen(false)}
+              className="relative"
+              onMouseEnter={() => setActiveMenu("products")}
+              onMouseLeave={() => setActiveMenu(null)}
             >
               <button
-                className={`flex items-center gap-1.5 text-xs font-semibold tracking-wider transition-colors duration-200 py-2 ${
-                  hasSolidNav
-                    ? "text-[#29344a] hover:text-[#236cb1]"
-                    : "text-white/90 hover:text-white"
+                className={`flex items-center gap-1 px-3.5 py-2 text-xs font-semibold tracking-wider transition-colors rounded-lg ${
+                  activeMenu === "products"
+                    ? "text-[#00C2E8] bg-white/5"
+                    : "text-gray-200 hover:text-[#00C2E8]"
                 }`}
-                aria-expanded={productsDropdownOpen}
               >
                 PRODUCTS
-                <ChevronDown className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    activeMenu === "products" ? "rotate-180 text-[#00C2E8]" : ""
+                  }`}
+                />
               </button>
 
               <div
-                className={`absolute top-full left-0 w-52 bg-white rounded-md shadow-xl border border-gray-100 py-2 transition-all duration-200 ${
-                  productsDropdownOpen
-                    ? "opacity-100 visible translate-y-0"
-                    : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                className={`absolute top-full -left-10 w-[440px] bg-[#0C1D35]/95 backdrop-blur-2xl border border-white/15 rounded-2xl shadow-2xl p-5 transition-all duration-200 ${
+                  activeMenu === "products"
+                    ? "opacity-100 visible translate-y-2"
+                    : "opacity-0 invisible pointer-events-none translate-y-0"
                 }`}
               >
-                {products.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2.5 text-xs font-medium text-gray-700 hover:text-[#236cb1] hover:bg-sky-50/60 transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                <div className="text-xs font-bold uppercase tracking-widest text-[#00C2E8] border-b border-white/10 pb-2 mb-3">
+                  Enterprise Software Suite
+                </div>
+                <div className="space-y-2">
+                  {products.map((prod) => (
+                    <a
+                      key={prod.name}
+                      href={prod.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/prod flex items-center justify-between p-2.5 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                    >
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-white group-hover/prod:text-[#00C2E8] transition-colors">
+                            {prod.name}
+                          </span>
+                          <span className="text-[10px] text-gray-400 font-mono">
+                            ({prod.category})
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-gray-400 line-clamp-1 mt-0.5">
+                          {prod.desc}
+                        </p>
+                      </div>
+                      <ExternalLink className="w-3.5 h-3.5 text-gray-500 group-hover/prod:text-[#00C2E8] transition-colors shrink-0 ml-2" />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Careers */}
+            {/* Solutions Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveMenu("solutions")}
+              onMouseLeave={() => setActiveMenu(null)}
+            >
+              <button
+                className={`flex items-center gap-1 px-3.5 py-2 text-xs font-semibold tracking-wider transition-colors rounded-lg ${
+                  activeMenu === "solutions"
+                    ? "text-[#00C2E8] bg-white/5"
+                    : "text-gray-200 hover:text-[#00C2E8]"
+                }`}
+              >
+                SOLUTIONS
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    activeMenu === "solutions" ? "rotate-180 text-[#00C2E8]" : ""
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`absolute top-full -left-20 w-[480px] bg-[#0C1D35]/95 backdrop-blur-2xl border border-white/15 rounded-2xl shadow-2xl p-5 transition-all duration-200 ${
+                  activeMenu === "solutions"
+                    ? "opacity-100 visible translate-y-2"
+                    : "opacity-0 invisible pointer-events-none translate-y-0"
+                }`}
+              >
+                <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#00C2E8]">
+                    Industry Impact &amp; Case Studies
+                  </span>
+                  <Link
+                    href="/#solutions"
+                    className="text-[11px] font-semibold text-gray-400 hover:text-white"
+                  >
+                    View All Case Studies &rarr;
+                  </Link>
+                </div>
+                <div className="space-y-2">
+                  {solutions.map((sol) => (
+                    <Link
+                      key={sol.title}
+                      href={sol.href}
+                      className="group/sol block p-2.5 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10"
+                    >
+                      <div className="text-xs font-bold text-white group-hover/sol:text-[#00C2E8] transition-colors">
+                        {sol.title}
+                      </div>
+                      <p className="text-[11px] text-gray-400 line-clamp-1 mt-0.5">
+                        {sol.desc}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <Link
               href="/careers"
-              className={`text-xs font-semibold tracking-wider transition-colors duration-200 ${
-                hasSolidNav
-                  ? "text-[#29344a] hover:text-[#236cb1]"
-                  : "text-white/90 hover:text-white"
-              }`}
+              className="px-3.5 py-2 text-xs font-semibold tracking-wider text-gray-200 hover:text-[#00C2E8] transition-colors rounded-lg"
             >
               CAREERS
             </Link>
 
-            {/* Contact Button */}
             <Link
-              href="/#contact"
-              className={`text-xs font-semibold px-5 py-2 rounded transition-all duration-200 border ${
-                hasSolidNav
-                  ? "border-[#236cb1] text-[#236cb1] hover:bg-[#236cb1] hover:text-white"
-                  : "border-white/80 text-white hover:bg-white hover:text-[#236cb1]"
-              }`}
+              href="/#about"
+              className="px-3.5 py-2 text-xs font-semibold tracking-wider text-gray-200 hover:text-[#00C2E8] transition-colors rounded-lg"
             >
-              CONTACT
+              ABOUT
             </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Action CTA */}
+          <div className="hidden lg:flex items-center gap-4">
+            <Link
+              href="/#contact"
+              className="relative group overflow-hidden px-5 py-2 rounded-full font-semibold text-xs text-white bg-gradient-to-r from-[#2864FF] to-[#00C2E8] hover:from-[#1f52d6] hover:to-[#00a9cb] shadow-lg shadow-blue-600/30 transition-all duration-300 transform hover:-translate-y-0.5"
+            >
+              <span className="relative z-10 flex items-center gap-1.5">
+                Let&apos;s Talk <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </Link>
+          </div>
+
+          {/* Mobile Hamburger Toggle */}
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-md ${
-                hasSolidNav ? "text-gray-800" : "text-white"
-              } focus:outline-none`}
-              aria-label="Toggle navigation menu"
+              className="p-2 rounded-xl text-gray-200 hover:text-white bg-white/5 border border-white/10 focus:outline-none"
+              aria-label="Toggle Navigation"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 text-[#00C2E8]" />
               ) : (
                 <Menu className="w-6 h-6" />
               )}
@@ -220,78 +403,99 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 shadow-xl px-6 py-6 space-y-4 max-h-[85vh] overflow-y-auto">
+        <div className="lg:hidden bg-[#071426] border-b border-white/10 px-6 py-8 space-y-6 max-h-[85vh] overflow-y-auto">
           <Link
-            href="/#home"
+            href="/"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-sm font-semibold tracking-wider text-[#29344a] hover:text-[#236cb1]"
+            className="block text-sm font-bold tracking-wider text-white hover:text-[#00C2E8]"
           >
             HOME
           </Link>
 
           <div>
-            <div className="text-xs font-bold text-gray-400 tracking-wider mb-2">
-              SERVICES
+            <div className="text-[11px] font-bold uppercase tracking-widest text-[#00C2E8] mb-3">
+              Services
             </div>
-            <div className="pl-3 space-y-2 border-l-2 border-sky-100">
+            <div className="space-y-2.5 pl-3 border-l border-white/10">
               {services.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.title}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-xs font-medium text-gray-700 hover:text-[#236cb1]"
+                  className="block text-xs font-medium text-gray-300 hover:text-white"
                 >
-                  {item.name}
+                  {item.title}
                 </Link>
               ))}
             </div>
           </div>
 
-          <Link
-            href="/#solutions"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-sm font-semibold tracking-wider text-[#29344a] hover:text-[#236cb1]"
-          >
-            SOLUTIONS
-          </Link>
-
           <div>
-            <div className="text-xs font-bold text-gray-400 tracking-wider mb-2">
-              PRODUCTS
+            <div className="text-[11px] font-bold uppercase tracking-widest text-[#00C2E8] mb-3">
+              Products
             </div>
-            <div className="pl-3 space-y-2 border-l-2 border-sky-100">
+            <div className="space-y-2.5 pl-3 border-l border-white/10">
               {products.map((item) => (
                 <a
                   key={item.name}
-                  href={item.href}
+                  href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-xs font-medium text-gray-700 hover:text-[#236cb1]"
+                  className="flex items-center justify-between text-xs font-medium text-gray-300 hover:text-white"
                 >
-                  {item.name}
+                  <span>{item.name}</span>
+                  <ExternalLink className="w-3 h-3 text-gray-500" />
                 </a>
               ))}
             </div>
           </div>
 
-          <Link
-            href="/careers"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-sm font-semibold tracking-wider text-[#29344a] hover:text-[#236cb1]"
-          >
-            CAREERS
-          </Link>
+          <div>
+            <div className="text-[11px] font-bold uppercase tracking-widest text-[#00C2E8] mb-3">
+              Solutions &amp; Case Studies
+            </div>
+            <div className="space-y-2.5 pl-3 border-l border-white/10">
+              {solutions.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-xs font-medium text-gray-300 hover:text-white"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          </div>
 
-          <div className="pt-2">
+          <div className="flex items-center gap-6 pt-2">
+            <Link
+              href="/careers"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-xs font-semibold text-gray-200 hover:text-[#00C2E8]"
+            >
+              CAREERS
+            </Link>
+            <Link
+              href="/#about"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-xs font-semibold text-gray-200 hover:text-[#00C2E8]"
+            >
+              ABOUT US
+            </Link>
+          </div>
+
+          <div className="pt-4">
             <Link
               href="/#contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block text-center text-xs font-semibold py-2.5 px-4 rounded border border-[#236cb1] text-[#236cb1] hover:bg-[#236cb1] hover:text-white"
+              className="w-full py-3 rounded-full text-center text-xs font-bold bg-gradient-to-r from-[#2864FF] to-[#00C2E8] text-white flex items-center justify-center gap-2"
             >
-              CONTACT US
+              <span>Let&apos;s Talk</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

@@ -1,7 +1,18 @@
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CheckCircle2, TrendingUp, Cpu, ShieldCheck, ArrowRight } from "lucide-react";
+import {
+  ArrowLeft,
+  CheckCircle2,
+  TrendingUp,
+  Cpu,
+  ShieldCheck,
+  ArrowRight,
+  Sparkles,
+  Layers,
+  Activity,
+  AlertTriangle,
+} from "lucide-react";
 
 interface CaseStudyData {
   title: string;
@@ -17,27 +28,28 @@ interface CaseStudyData {
 
 const caseStudies: Record<string, CaseStudyData> = {
   "e-commerce-casestudy": {
-    title: "The E-commerce Advantage",
-    subtitle: "A Study on Boosting Sales, System Agility, and Customer Loyalty",
+    title: "The E-commerce Advantage: Boosting Sales & Loyalty",
+    subtitle: "A Study on Scaling High-Throughput Digital Storefronts with Modular Managed Services",
     category: "E-commerce Modernization",
     bgImage: "/assets/pexels-karolina-grabowska-5717947.webp",
     clientOverview:
-      "A fast-growing multi-brand retail enterprise experiencing exponential order volume growth across digital storefronts, constrained by monolithic bottlenecks.",
+      "A fast-growing multi-brand retail enterprise experiencing exponential order volume growth across digital storefronts, constrained by legacy monolithic checkout bottlenecks.",
     challenge: [
-      "Rigid legacy platform unable to scale during peak holiday flash sales.",
-      "Lengthy release cycles for new promotional campaigns taking up to 3 weeks.",
-      "High cart abandonment rates due to sluggish checkout latency.",
+      "Rigid legacy platform unable to scale during peak holiday flash sales, resulting in severe slowdowns.",
+      "Lengthy release cycles for new promotional campaigns taking up to 3 weeks to deploy.",
+      "High cart abandonment rates due to sluggish multi-step checkout latency.",
     ],
     solution: [
-      "Implemented a modular managed services model delivering features in iterative phases.",
+      "Implemented a modular managed services delivery model releasing commerce features in decoupled phases.",
       "Transitioned core catalog and checkout services to resilient cloud microservices.",
-      "Integrated automated real-time inventory synchronization across multi-warehouse locations.",
+      "Integrated automated real-time inventory synchronization across multi-warehouse logistics nodes.",
     ],
     architecture: [
       "Next.js Headless Storefront",
       "Event-Driven Microservices with RabbitMQ",
       "Stripe & Multi-Currency Payment Gateway",
       "Redis Distributed Cache Layer",
+      "Algolia Instant Search",
     ],
     metrics: [
       { value: "48%", label: "Faster Page Load Speed" },
@@ -46,44 +58,45 @@ const caseStudies: Record<string, CaseStudyData> = {
     ],
   },
   "data-integration-casestudy": {
-    title: "Connecting the Dots: Data Integration",
-    subtitle: "A Case Study in Real-Time Integration for Unified Customer 360 Insights",
+    title: "Connecting the Dots: Unified Customer 360",
+    subtitle: "A Case Study in Real-Time Integration for Actionable Enterprise Insights",
     category: "Enterprise Data Hub",
     bgImage: "/assets/high-technology-digital-graph-presentation-by-businesswoman.webp",
     clientOverview:
       "A multinational customer services provider with siloed customer information spanning on-premise ERPs, streaming web events, and fragmented CRM instances.",
     challenge: [
-      "Fragmented data across legacy databases preventing a single customer view.",
-      "Inability to react in real-time to high-value user triggers or support requests.",
-      "Manual batch synchronization resulting in stale data and duplicate communications.",
+      "Fragmented data across legacy relational databases preventing a single customer view.",
+      "Inability to react in real-time to high-value user triggers or urgent support escalations.",
+      "Manual batch synchronization resulting in stale data and duplicate marketing communications.",
     ],
     solution: [
       "Engineered a SaaS-based customer engagement hub connecting instantly to any application.",
-      "Implemented bi-directional connectors for streaming data, custom ERPs, and marketing suites.",
-      "Standardized data schema validation and automated duplicate resolution.",
+      "Implemented bi-directional connectors for streaming data, custom ERPs, and marketing automation.",
+      "Standardized data schema validation and automated duplicate customer entity resolution.",
     ],
     architecture: [
       "Apache Kafka Event Bus",
       "Snowflake Data Lakehouse",
       "Custom REST & GraphQL Integration Gateway",
       "Automated dbt Data Modeling",
+      "Power BI Executive Dashboards",
     ],
     metrics: [
       { value: "360°", label: "Unified Real-Time Customer Profile" },
-      { value: "85%", label: "Reduction in Data Synchronization Latency" },
+      { value: "85%", label: "Reduction in Data Latency" },
       { value: "3.2x", label: "Higher Campaign Engagement" },
     ],
   },
   "testing-automation": {
     title: "Enhancing Retail Performance with Test Automation",
-    subtitle: "Accelerating Software Velocity with Reusable Frameworks & Continuous Testing",
+    subtitle: "Accelerating Software Velocity with Reusable Frameworks & Continuous CI/CD Testing",
     category: "QA & Test Automation",
     bgImage: "/assets/pexels-rodnae-productions-7915289.webp",
     clientOverview:
       "A prominent retail solutions developer with bi-weekly release cadences struggling with extensive manual regression testing bottlenecks across web and mobile platforms.",
     challenge: [
       "Manual test execution cycles required 5 days before each production deployment.",
-      "Intermittent UI test flakiness leading to false negatives and delayed sprints.",
+      "Intermittent UI test flakiness leading to false negatives and delayed sprint sign-offs.",
       "Incomplete test coverage across diverse mobile viewports and legacy browsers.",
     ],
     solution: [
@@ -96,15 +109,16 @@ const caseStudies: Record<string, CaseStudyData> = {
       "TypeScript Reusable Test Harness",
       "Dockerized CI/CD Test Runners",
       "Allure Test Telemetry & Reporting",
+      "BrowserStack Cross-Device Cloud",
     ],
     metrics: [
-      { value: "40%", label: "Reduction in Script Development Effort" },
+      { value: "40%", label: "Script Effort Development Cut" },
       { value: "75%", label: "Faster Regression Execution Time" },
-      { value: "94%", label: "Automated Critical Path Test Coverage" },
+      { value: "94%", label: "Automated Critical Path Coverage" },
     ],
   },
   "building-a-storefront": {
-    title: "Beyond Building a Storefront",
+    title: "Beyond Building a Storefront: Decoupled Commerce",
     subtitle: "Migrating from End-of-Life Platforms to a Resilient Future-Proof Architecture",
     category: "E-commerce Transformation",
     bgImage: "/assets/ai-shopping-e-comm.webp",
@@ -125,10 +139,11 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Tailwind & React UI Component Library",
       "Signifyd & Riskified Fraud Prevention APIs",
       "Algolia Instant Search Integration",
+      "Cloudflare Edge Caching",
     ],
     metrics: [
       { value: "0", label: "Hours of Customer-Facing Downtime" },
-      { value: "62%", label: "Reduction in Fraud Investigation Delays" },
+      { value: "62%", label: "Reduction in Fraud Delays" },
       { value: "28%", label: "Increase in Mobile Conversion" },
     ],
   },
@@ -154,6 +169,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Distributed Event Sourcing Architecture",
       "Hardware-Secured Tokenization Vault",
       "Multi-Region Active-Active Cloud Deployment",
+      "Kubernetes Enterprise Mesh",
     ],
     metrics: [
       { value: "10,000+", label: "Transactions Processed Per Second" },
@@ -162,7 +178,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     ],
   },
   "cloud-transformation-journey": {
-    title: "A Cloud Transformation Journey",
+    title: "A Structured Cloud Transformation Journey",
     subtitle: "Migrating from On-Premises Hosting to Elastic, Cost-Optimized Cloud Infrastructure",
     category: "Cloud Migration",
     bgImage: "/assets/cloud-computing.webp",
@@ -174,7 +190,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Single points of failure with inadequate disaster recovery capabilities.",
     ],
     solution: [
-      "Formulated an phased migration blueprint leveraging Infrastructure-as-Code and containerization.",
+      "Formulated a phased migration blueprint leveraging Infrastructure-as-Code and containerization.",
       "Refactored stateful databases to managed multi-zone cloud database instances with automated failover.",
       "Implemented continuous FinOps cost governance and automated workload shutdown rules.",
     ],
@@ -183,6 +199,7 @@ const caseStudies: Record<string, CaseStudyData> = {
       "Terraform Infrastructure as Code",
       "Azure Kubernetes Service (AKS)",
       "Automated DR with Geo-Replication",
+      "Azure Monitor & Datadog APM",
     ],
     metrics: [
       { value: "42%", label: "Total Cost of Ownership (TCO) Reduction" },
@@ -209,48 +226,48 @@ export default async function CaseStudyPage({
   }
 
   return (
-    <div className="pt-24 pb-20 bg-white">
-      {/* Hero Banner */}
-      <div className="bg-[#1c2438] text-white py-20 relative overflow-hidden">
+    <div className="pt-20 bg-white">
+      {/* Cinematic Case Study Hero */}
+      <div className="bg-[#071426] text-white py-24 relative overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-25"
+          className="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none"
           style={{ backgroundImage: `url(${data.bgImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1c2438] via-[#1c2438]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071426] via-[#071426]/90 to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Link
             href="/#solutions"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#85c4ff] hover:text-white mb-6 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#00C2E8] hover:text-white mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Solutions</span>
+            <span>Back to All Solutions</span>
           </Link>
 
-          <div className="inline-block px-3.5 py-1 rounded bg-[#236cb1]/40 border border-[#2faae1]/50 text-[#2faae1] text-xs font-bold uppercase tracking-wider mb-4 ml-4">
+          <div className="inline-block px-3.5 py-1 rounded-md bg-[#2864FF]/20 border border-[#2864FF]/40 text-[#00C2E8] text-xs font-bold uppercase tracking-wider mb-4 ml-4">
             {data.category}
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-4 max-w-4xl">
+          <h1 className="hero-title font-extrabold tracking-tight text-white mb-4 max-w-4xl">
             {data.title}
           </h1>
 
-          <p className="text-gray-300 text-lg sm:text-xl max-w-3xl leading-relaxed mb-8 font-light">
+          <p className="text-gray-300 text-lg sm:text-xl max-w-3xl leading-relaxed mb-6 font-light">
             {data.subtitle}
           </p>
         </div>
       </div>
 
-      {/* Metrics Banner */}
-      <div className="bg-sky-50 border-y border-sky-100 py-10">
+      {/* Verified Metrics Bar */}
+      <div className="bg-[#F4F7FB] border-y border-gray-200 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {data.metrics.map((m, idx) => (
-              <div key={idx} className="p-4">
-                <div className="text-3xl sm:text-4xl font-extrabold text-[#236cb1] mb-1">
+              <div key={idx} className="p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                <div className="text-3xl sm:text-4xl font-extrabold text-[#2864FF] mb-1">
                   {m.value}
                 </div>
-                <div className="text-xs sm:text-sm font-medium text-gray-600">
+                <div className="text-xs sm:text-sm font-semibold text-[#071426] uppercase tracking-wider">
                   {m.label}
                 </div>
               </div>
@@ -259,15 +276,17 @@ export default async function CaseStudyPage({
         </div>
       </div>
 
-      {/* Case Study Details */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Main Content */}
+      {/* Detailed Editorial Breakdown */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Main Case Narrative */}
           <div className="lg:col-span-8 space-y-12">
-            {/* Overview */}
             <div>
-              <h2 className="text-2xl font-bold text-[#29344a] mb-4">
-                Client Background
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#2864FF]/10 text-[#2864FF] text-xs font-bold uppercase tracking-wider mb-3">
+                Client Profile
+              </div>
+              <h2 className="text-2xl font-bold text-[#071426] mb-3">
+                Organizational Context
               </h2>
               <p className="text-gray-600 text-base leading-relaxed">
                 {data.clientOverview}
@@ -275,47 +294,55 @@ export default async function CaseStudyPage({
             </div>
 
             {/* Challenges */}
-            <div>
-              <h2 className="text-2xl font-bold text-[#29344a] mb-4">
-                The Business Challenge
+            <div className="p-8 rounded-3xl bg-rose-50/50 border border-rose-100 space-y-4">
+              <div className="flex items-center gap-2 text-rose-600 font-bold text-xs uppercase tracking-wider">
+                <AlertTriangle className="w-4 h-4" />
+                <span>The Core Business Friction</span>
+              </div>
+              <h2 className="text-2xl font-bold text-[#071426]">
+                Identified Operational Bottlenecks
               </h2>
-              <div className="space-y-3">
+              <div className="space-y-3 pt-2">
                 {data.challenge.map((c, i) => (
-                  <div key={i} className="flex items-start gap-3 text-gray-700 text-base">
-                    <span className="w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0" />
+                  <div key={i} className="flex items-start gap-3 text-gray-700 text-sm">
+                    <span className="w-2 h-2 rounded-full bg-rose-500 mt-2 shrink-0" />
                     <span>{c}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Solution */}
-            <div>
-              <h2 className="text-2xl font-bold text-[#29344a] mb-4">
-                The VueData Solution
+            {/* The Solution */}
+            <div className="p-8 rounded-3xl bg-sky-50/50 border border-sky-100 space-y-4">
+              <div className="flex items-center gap-2 text-[#2864FF] font-bold text-xs uppercase tracking-wider">
+                <Sparkles className="w-4 h-4" />
+                <span>The VueData Approach</span>
+              </div>
+              <h2 className="text-2xl font-bold text-[#071426]">
+                Architectural Transformation &amp; Delivery
               </h2>
-              <div className="space-y-3">
+              <div className="space-y-3 pt-2">
                 {data.solution.map((s, i) => (
-                  <div key={i} className="flex items-start gap-3 text-gray-700 text-base">
-                    <CheckCircle2 className="w-5 h-5 text-[#236cb1] mt-0.5 shrink-0" />
+                  <div key={i} className="flex items-start gap-3 text-gray-700 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#2864FF] mt-1 shrink-0" />
                     <span>{s}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Architecture */}
+            {/* Architecture Stack */}
             <div>
-              <h2 className="text-2xl font-bold text-[#29344a] mb-4">
+              <h2 className="text-2xl font-bold text-[#071426] mb-4">
                 Architecture &amp; Key Technologies
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {data.architecture.map((tech, i) => (
                   <div
                     key={i}
-                    className="p-4 rounded-lg bg-gray-50 border border-gray-100 flex items-center gap-3 text-sm font-medium text-gray-800"
+                    className="p-4 rounded-xl bg-[#F4F7FB] border border-gray-200/80 flex items-center gap-3 text-xs sm:text-sm font-semibold text-gray-800"
                   >
-                    <Cpu className="w-4 h-4 text-[#2faae1] shrink-0" />
+                    <Cpu className="w-4 h-4 text-[#00C2E8] shrink-0" />
                     <span>{tech}</span>
                   </div>
                 ))}
@@ -323,20 +350,23 @@ export default async function CaseStudyPage({
             </div>
           </div>
 
-          {/* Sidebar CTA */}
+          {/* Sticky Sidebar CTA */}
           <div className="lg:col-span-4">
-            <div className="sticky top-28 p-8 rounded-2xl bg-gradient-to-br from-[#1c2438] to-[#29344a] text-white shadow-xl">
-              <h3 className="text-xl font-bold mb-3">
-                Need Similar Results for Your Business?
+            <div className="sticky top-28 p-8 rounded-3xl bg-[#071426] text-white shadow-2xl border border-white/10 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#00C2E8]/20 text-[#00C2E8] text-xs font-bold uppercase tracking-wider">
+                Partner With VueData
+              </div>
+              <h3 className="text-2xl font-bold tracking-tight">
+                Achieve Similar Results for Your Enterprise
               </h3>
-              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">
-                Consult with VueData&apos;s solution architects to design a customized strategy tailored for your enterprise growth.
+              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-light">
+                Schedule a confidential working session with our technical architects to analyze your systems and formulate an accelerated modernization plan.
               </p>
               <Link
                 href="/#contact"
-                className="w-full inline-flex items-center justify-center gap-2 bg-[#236cb1] hover:bg-[#1a5288] text-white py-3 px-5 rounded-lg text-sm font-semibold transition-all shadow-md"
+                className="w-full btn-primary text-xs flex items-center justify-center gap-2"
               >
-                <span>Request Case Study Brief</span>
+                <span>Request Custom Briefing</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

@@ -2,46 +2,61 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Heart, Target, Users, Sparkles } from "lucide-react";
 
 export default function CareersSection() {
   return (
-    <section id="careers" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-wider text-[#29344a] uppercase mb-4">
-          CAREERS
-        </h2>
-        <div className="w-16 h-1 bg-[#236cb1] mx-auto rounded-full" />
-      </div>
+    <section id="careers" className="py-24 bg-[#F4F7FB] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#071426] via-[#0C1D35] to-[#152642] text-white shadow-2xl border border-white/10 p-8 sm:p-14 lg:p-20">
+          {/* Ambient Lighting Accents */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#2864FF]/20 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00C2E8]/15 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="relative w-full min-h-[480px] flex items-center justify-center overflow-hidden">
-        {/* Background Image with dark overlay */}
-        <div
-          className="absolute inset-0 bg-cover bg-bottom z-0"
-          style={{ backgroundImage: "url(/assets/career1.jpg)" }}
-        />
-        <div className="absolute inset-0 bg-black/65 z-10" />
+          <div className="relative z-10 max-w-3xl space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 border border-white/15 text-[#00C2E8] text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Join VueData Engineering</span>
+            </div>
 
-        <div className="relative z-20 max-w-3xl mx-auto px-4 sm:px-6 text-center text-white py-16">
-          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">
-            Let&apos;s grow together!
-          </h3>
+            <h2 className="section-title font-extrabold text-white tracking-tight">
+              Let&apos;s Build the Future of Tech Together.
+            </h2>
 
-          <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto mb-4 font-light">
-            We&apos;re building a workplace at VueData where amazingly talented and creative people (like you) can be who they are and do their best work.
-          </p>
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed font-light">
+              We&apos;re building an inclusive workplace at VueData where amazingly talented software engineers, data scientists, and creative architects can do their career-defining work.
+            </p>
 
-          <p className="text-lg sm:text-xl font-medium text-white mb-8">
-            Interested to know more?
-          </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <Heart className="w-6 h-6 text-rose-400 mb-2" />
+                <h4 className="text-sm font-bold text-white mb-1">Care</h4>
+                <p className="text-xs text-gray-400">Personal well-being, intellectual growth &amp; balance.</p>
+              </div>
 
-          <Link
-            href="/careers"
-            className="inline-flex items-center gap-2 bg-[#236cb1] hover:bg-[#1a5288] text-white px-8 py-3.5 rounded-lg font-semibold text-sm sm:text-base tracking-wide transition-all shadow-lg hover:shadow-blue-900/40 transform hover:-translate-y-0.5"
-          >
-            <span>See our curated jobs</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <Target className="w-6 h-6 text-[#00C2E8] mb-2" />
+                <h4 className="text-sm font-bold text-white mb-1">Commit</h4>
+                <p className="text-xs text-gray-400">Engineering excellence &amp; tangible client impact.</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <Users className="w-6 h-6 text-[#7657F6] mb-2" />
+                <h4 className="text-sm font-bold text-white mb-1">Commune</h4>
+                <p className="text-xs text-gray-400">Collaborative global teams across USA &amp; India.</p>
+              </div>
+            </div>
+
+            <div className="pt-6">
+              <Link
+                href="/careers"
+                className="btn-primary text-xs inline-flex items-center gap-2"
+              >
+                <span>Explore Curated Open Positions</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

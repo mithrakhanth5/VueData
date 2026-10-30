@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, TrendingUp, Layers, ChevronRight } from "lucide-react";
 
 interface SolutionItem {
   id: string;
@@ -11,170 +11,194 @@ interface SolutionItem {
   desc: string;
   bgImage: string;
   href: string;
-  highlights: string[];
+  challenge: string;
+  solutionImpact: string;
+  metrics: string;
 }
 
 const solutions: SolutionItem[] = [
   {
     id: "ecommerce",
-    category: "E-commerce",
-    headline: "Growing beyond entry level system",
-    desc: "We build modular approach (managed services) to deliver features in phases. This allows the business to prioritize features based on the needs and set an established process for adding new features and functionality.",
+    category: "E-Commerce",
+    headline: "Growing Beyond Entry-Level Architecture",
+    desc: "We built a modular managed services approach to deliver commerce capabilities in decoupled phases. This allows the business to prioritize high-converting features based on real-time market demands and establish an automated process for continuous rollout.",
     bgImage: "/assets/pexels-karolina-grabowska-5717947.webp",
     href: "/solutions/e-commerce-casestudy",
-    highlights: [
-      "Modular managed services delivery",
-      "Seamless phase-by-phase rollout",
-      "Optimized checkout conversion rates",
-    ],
+    challenge: "Legacy monolithic cart bottlenecks during viral traffic peaks.",
+    solutionImpact: "Modular microservices architecture with elastic catalog scaling.",
+    metrics: "+34% Checkout Conversion",
   },
   {
     id: "data-integration",
     category: "Data Integration",
-    headline: "Get a 360° view of end customers",
-    desc: "A SaaS-based customer engagement hub that connects instantly to any application, streaming data, on-premise, or custom enterprise systems. The engagement hub helps you build integrations to connect with any application that impacts customer experience.",
+    headline: "Get a 360° Omnichannel View of End Customers",
+    desc: "A SaaS-based customer engagement hub that connects instantly to any application, streaming data, on-premise systems, or custom enterprise software. The engagement hub helps you build integrations that directly elevate customer satisfaction and retention.",
     bgImage: "/assets/high-technology-digital-graph-presentation-by-businesswoman.webp",
     href: "/solutions/data-integration-casestudy",
-    highlights: [
-      "Universal connectors for streaming & batch data",
-      "Omnichannel real-time customer insights",
-      "Unified customer 360 profile",
-    ],
+    challenge: "Fragmented customer data across disparate CRM & ERP siloes.",
+    solutionImpact: "Unified event streaming pipeline with real-time profile resolution.",
+    metrics: "360° Single Customer View",
   },
   {
     id: "test-automation",
     category: "Test Automation",
-    headline: "Accelerate your automation testing",
-    desc: "Using our customizable and reusable Test Automation Framework and libraries, you can cut the automation script development effort by 40%. With all the plumbing in place, the QA team was able to focus on test coverage. Talk to us to know more about how we can accelerate your testing process.",
+    headline: "Accelerating Software Delivery Velocity",
+    desc: "Using our customizable and reusable Test Automation Framework and component libraries, you can cut automation script development effort by 40%. With all the plumbing in place, QA teams focus entirely on test coverage and defect prevention.",
     bgImage: "/assets/pexels-rodnae-productions-7915289.webp",
     href: "/solutions/testing-automation",
-    highlights: [
-      "40% reduction in test script development effort",
-      "Reusable cross-browser test frameworks",
-      "CI/CD continuous testing integration",
-    ],
+    challenge: "5-day manual testing regressions delaying release velocity.",
+    solutionImpact: "Automated multi-browser continuous regression embedded in CI/CD.",
+    metrics: "40% Script Effort Reduction",
   },
   {
     id: "storefront",
-    category: "Beyond building a storefront",
-    headline: "Expanding your online presence",
-    desc: "Each digital transformation has a story behind and here, it's the end of life of Magento Platform 1.X. The challenge was to migrate all ECommerce sites to latest Magento Platform (2.x) to keep the business continuity while in parallel plan to move away from Magento platform dependency.",
+    category: "Platform Migration",
+    headline: "Beyond Building a Storefront",
+    desc: "Each digital transformation has a story behind it. Here, facing the end of life of Magento 1.X, the challenge was to migrate all E-commerce sites to the latest modern platform to preserve business continuity while systematically decoupling third-party dependencies.",
     bgImage: "/assets/ai-shopping-e-comm.webp",
     href: "/solutions/building-a-storefront",
-    highlights: [
-      "Zero-downtime Magento 2.x migration",
-      "Decoupled headless architecture",
-      "Future-proof commerce roadmap",
-    ],
+    challenge: "Urgent end-of-life migration with zero tolerance for downtime.",
+    solutionImpact: "Decoupled headless storefront with intelligent fraud prevention.",
+    metrics: "Zero Customer Downtime",
   },
   {
     id: "payment",
-    category: "Scaling payment solutions",
-    headline: "Facilitating payment integration across banks",
-    desc: "One of our clients aimed to expand its services by building a scalable, secure platform providing insurance on deposits, clearing, and settlement areas. The platform and gateway must be generic and compatible with real-time/batch inter-bank networks, without interrupting existing deployments.",
+    category: "Fintech & Payments",
+    headline: "Scaling Payment Gateways Across Inter-Bank Networks",
+    desc: "Our client aimed to expand its services by engineering a scalable, secure platform providing insurance on deposits, clearing, and settlement. The platform and gateway are fully compatible with real-time and batch inter-bank networks without interrupting existing deployments.",
     bgImage: "/assets/pexels-tim-douglas-6205512.webp",
     href: "/solutions/payments-solution",
-    highlights: [
-      "High-throughput inter-bank gateway",
-      "Real-time & batch settlement protocols",
-      "Bank-grade security and compliance",
-    ],
+    challenge: "Strict compliance, banking encryption, and zero transaction loss.",
+    solutionImpact: "High-throughput inter-bank gateway with automated reconciliation.",
+    metrics: "10,000+ Tx / Second",
   },
   {
     id: "cloud",
-    category: "A Cloud transformation journey",
-    headline: "Cloud computing for digital transformation",
-    desc: "Increasing infrastructure cost with third-party and on-premises hosting, they did not have a clear cloud strategy and needed help in reducing infrastructure cost and scaling their user base.",
+    category: "Cloud Migration",
+    headline: "A Structured Cloud Transformation Journey",
+    desc: "Confronted by increasing infrastructure costs with third-party and on-premises hosting, the client lacked an elastic cloud strategy. VueData architected a multi-phase migration to reduce infrastructure expenditures while flawlessly scaling user capacity.",
     bgImage: "/assets/cloud-computing.webp",
     href: "/solutions/cloud-transformation-journey",
-    highlights: [
-      "Significant cloud infrastructure TCO reduction",
-      "Auto-scaling elastic infrastructure",
-      "Multi-region high availability",
-    ],
+    challenge: "Escalating fixed hosting expenditures and rigid capacity limits.",
+    solutionImpact: "Multi-region cloud infrastructure with auto-scaling FinOps rules.",
+    metrics: "42% TCO Reduction",
   },
 ];
 
 export default function SolutionsSection() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [selectedIdx, setSelectedIdx] = useState(0);
+  const current = solutions[selectedIdx];
 
   return (
-    <section id="solutions" className="py-24 bg-[#1e2538] text-white relative overflow-hidden">
-      {/* Background visual accents */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#236cb1]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2faae1]/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-            Innovative Solutions to your Complex Business challenges
-          </h2>
-          <div className="w-16 h-1 bg-[#2faae1] mx-auto rounded-full" />
+    <section id="solutions" className="py-24 bg-white relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#2864FF]/10 text-[#2864FF] text-xs font-bold tracking-wider uppercase mb-3">
+              Real-World Enterprise Outcomes
+            </div>
+            <h2 className="section-title font-extrabold text-[#071426] tracking-tight">
+              Innovative Solutions to Complex Business Challenges
+            </h2>
+          </div>
+          <p className="text-gray-600 text-sm sm:text-base max-w-md font-normal leading-relaxed">
+            Discover how VueData partners with forward-thinking enterprises to navigate architectural inflection points and deliver measurable impact.
+          </p>
         </div>
 
-        {/* Tab Navigation Pill Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {solutions.map((item, index) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(index)}
-              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ${
-                activeTab === index
-                  ? "bg-[#236cb1] text-white shadow-lg shadow-blue-900/50 scale-105"
-                  : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white"
-              }`}
-            >
-              {item.category}
-            </button>
-          ))}
+        {/* Tab Selection Bar */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
+          {solutions.map((item, idx) => {
+            const isSelected = idx === selectedIdx;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setSelectedIdx(idx)}
+                className={`px-5 py-3 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-300 ${
+                  isSelected
+                    ? "bg-[#071426] text-white shadow-lg"
+                    : "bg-[#F4F7FB] text-gray-600 hover:bg-gray-200/70"
+                }`}
+              >
+                {item.category}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Active Solution Showcase */}
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 min-h-[460px] flex flex-col lg:flex-row">
-          {/* Background image with gradient */}
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-all duration-700"
-            style={{
-              backgroundImage: `url(${solutions[activeTab].bgImage})`,
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#181f30] via-[#1c2438]/95 to-[#1c2438]/80 lg:to-transparent" />
+        {/* Main Showcase Container - Editorial Style */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden border border-gray-200/80 shadow-2xl bg-[#071426] text-white">
+          {/* Left Visual & Image with Overlay */}
+          <div className="lg:col-span-5 relative min-h-[340px] lg:min-h-[500px] overflow-hidden">
+            <img
+              src={current.bgImage}
+              alt={current.headline}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#071426] via-[#071426]/60 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#071426]" />
 
-          {/* Solution Content */}
-          <div className="relative z-10 p-8 sm:p-12 lg:p-16 max-w-2xl flex flex-col justify-between">
-            <div>
-              <div className="inline-block px-3.5 py-1 rounded bg-[#236cb1]/30 border border-[#2faae1]/40 text-[#2faae1] text-xs font-bold uppercase tracking-wider mb-4">
-                {solutions[activeTab].category}
+            <div className="absolute top-6 left-6 z-10">
+              <span className="px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider border border-white/20">
+                {current.category}
+              </span>
+            </div>
+
+            <div className="absolute bottom-6 left-6 right-6 z-10">
+              <div className="p-4 rounded-xl bg-[#0C1D35]/90 backdrop-blur-md border border-white/10">
+                <div className="text-[11px] font-semibold text-[#00C2E8] uppercase tracking-wider">
+                  Quantifiable Outcome
+                </div>
+                <div className="text-xl sm:text-2xl font-extrabold text-white">
+                  {current.metrics}
+                </div>
               </div>
+            </div>
+          </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
-                {solutions[activeTab].headline}
+          {/* Right Editorial Storytelling Content */}
+          <div className="lg:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-between space-y-8">
+            <div className="space-y-6">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+                {current.headline}
               </h3>
 
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 font-light">
-                {solutions[activeTab].desc}
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed font-light">
+                {current.desc}
               </p>
 
-              {/* Highlights */}
-              <div className="space-y-2 mb-8">
-                {solutions[activeTab].highlights.map((h, i) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-200">
-                    <CheckCircle2 className="w-4 h-4 text-[#2faae1] shrink-0" />
-                    <span>{h}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+                <div className="space-y-1">
+                  <div className="text-xs font-bold uppercase tracking-wider text-rose-400">
+                    The Challenge
                   </div>
-                ))}
+                  <p className="text-xs text-gray-300 leading-relaxed">
+                    {current.challenge}
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                    The Solution
+                  </div>
+                  <p className="text-xs text-gray-300 leading-relaxed">
+                    {current.solutionImpact}
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div>
+            <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/10">
               <Link
-                href={solutions[activeTab].href}
-                className="inline-flex items-center gap-2 bg-[#236cb1] hover:bg-[#1d5b96] text-white text-xs sm:text-sm font-semibold px-6 py-3 rounded-lg shadow-md transition-all group"
+                href={current.href}
+                className="inline-flex items-center gap-2 btn-primary text-xs"
               >
-                <span>Read Full Case Study</span>
-                <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <span>Read Complete Case Study</span>
+                <ArrowUpRight className="w-4 h-4" />
               </Link>
+
+              <span className="text-xs text-gray-400 font-mono">
+                Case Study {selectedIdx + 1} of {solutions.length}
+              </span>
             </div>
           </div>
         </div>
